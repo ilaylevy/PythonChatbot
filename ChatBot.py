@@ -1,10 +1,10 @@
 import random as rand
-print("prefix is @")
 prefix = "@"
+print(f"prefix is {prefix}")
 userlist = []
-commandlist = ["randint", "switchuser", "help"]
+commandlist = ["randint", "switchuser", "help", "users"]
 
-def chatbotrun():
+def chatbotrun(newuser=None):
     command = input("")
     if command == f"{prefix}help":
         print(f"heres a quick tour\n\n * if you want to change your prefix or even entire commands with this as a\nbase... the code's open source!\n* your prefix is {prefix}, but you can always change it in the code later on\n* all commands are displayed in the {prefix}commands command")
@@ -21,11 +21,16 @@ def chatbotrun():
             userlist.append(newuser)
             print(f"welcome {newuser}")
             chatbotrun()
+        elif newuser != userlist:
+            print("this user already exists") 
         elif username != userlist:
             print(f"welcome {username}")
             chatbotrun()
     if command == f"{prefix}commands":
         print(commandlist)
+        chatbotrun()
+    if command == f"{prefix}users":
+        print(userlist)
         chatbotrun()
 
 
